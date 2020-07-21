@@ -1,41 +1,94 @@
 <!-- Please do not change this html logo with link -->
 <a href="https://www.microchip.com" rel="nofollow"><img src="images/microchip.png" alt="MCHP" width="300"/></a>
 
-# Update the title for [ADD_REPO_NAME_HERE] here
+# Transmit "Button pressed" using Interrupt-on-Change with PIC16F15244
 
-<!-- This is where the introduction to the example goes, including mentioning the peripherals used -->
+The 'pic16f15244-ioc-example' code example uses the PIC16F15244 Curiosity Nano Development board to demonstrate how to transmit "Button pressed!" to a PC terminal application each time the Nano's push-button (SW0) is pressed. The example hihglights the use of the Interrupt-on-Change (IOC) and EUSART modules.
+
+##### PIC16F15244 Curiosity Nano Development Board:
+![Curiosity Nano Development Board](images/NanoHighlights.png)
 
 ## Related Documentation
-
-<!-- Any information about an application note or tech brief can be linked here. Use unbreakable links!
-     In addition a link to the device family landing page and relevant peripheral pages as well:
-     - [AN3381 - Brushless DC Fan Speed Control Using Temperature Input and Tachometer Feedback](https://microchip.com/00003381/)
-     - [PIC18F-Q10 Family Product Page](https://www.microchip.com/design-centers/8-bit/pic-mcus/device-selection/pic18f-q10-product-family) -->
+- [PIC16F15244 Product Page](https://www.microchip.com/wwwproducts/en/PIC16F15244)
 
 ## Software Used
-
-<!-- All software used in this example must be listed here. Use unbreakable links!
-     - MPLAB® X IDE 5.30 or newer [(microchip.com/mplab/mplab-x-ide)](http://www.microchip.com/mplab/mplab-x-ide)
-     - MPLAB® XC8 2.10 or a newer compiler [(microchip.com/mplab/compilers)](http://www.microchip.com/mplab/compilers)
-     - MPLAB® Code Configurator (MCC) 3.95.0 or newer [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
-     - MPLAB® Code Configurator (MCC) Device Libraries PIC10 / PIC12 / PIC16 / PIC18 MCUs [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
-     - Microchip PIC18F-Q Series Device Support (1.4.109) or newer [(packs.download.microchip.com/)](https://packs.download.microchip.com/) -->
+- MPLAB® X IDE 5.40 or newer [(microchip.com/mplab/mplab-x-ide)](http://www.microchip.com/mplab/mplab-x-ide)
+- MPLAB® XC8 2.20 or a newer compiler [(microchip.com/mplab/compilers)](http://www.microchip.com/mplab/compilers)
+- MPLAB® Code Configurator (MCC) 3.95.0 or newer [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
+- MPLAB® Code Configurator (MCC) Device Libraries PIC10 / PIC12 / PIC16 / PIC18 MCUs [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
+- Microchip PIC16F1xxxx Series Device Support (1.4.119) or newer [(packs.download.microchip.com/)](https://packs.download.microchip.com/)
 
 ## Hardware Used
-
-<!-- All hardware used in this example must be listed here. Use unbreakable links!
-     - PIC18F47Q10 Curiosity Nano [(DM182029)](https://www.microchip.com/Developmenttools/ProductDetails/DM182029)
-     - Curiosity Nano Base for Click boards™ [(AC164162)](https://www.microchip.com/Developmenttools/ProductDetails/AC164162)
-     - POT Click board™ [(MIKROE-3402)](https://www.mikroe.com/pot-click) -->
+- PIC16F15244 Curiosity Nano [(DMxxxx)](https://www.microchip.com/Developmenttools/ProductDetails/EV09Z19A)
+- Micro-USB to USB 2.0 cable
 
 ## Setup
+1. Connect the PIC16f15244 Curiosity Nano board to a PC using the Micro-USB to USB 2.0 cable.
+2. If not already on your system, download and install MPLABX IDE version 5.40 (or newer).
+3. If not already on your system, download and install the XC8 C-Compiler version 2.20 (or newer).
+4. Open the 'pic16f15244-ioc-example.X' project as shown in Figure 1.
 
-<!-- Explain how to connect hardware and set up software. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
+  ###### Figure 1: Open Project Window
+  ![Open Project Window](images/OpenProject.png)
+
+5. Press the 'Project Properites' button to open the Project Properties window. Select the Curiosity tool from the Tools drop-down menu as shown in Figure 2.
+
+  ###### Figure 2: Select the Nano in Project Properties Window
+  ![Select Tool](images/SelectTool.png)
+
+6. Press the 'Make and Program Device' button to program the PIC (see Figure 3). Verify that the device was successfully programmed (see Figure 4).
+
+  ###### Figure 3: 'Make and Program Device' Button
+  ![Program Device Button](images/MakeAndProgramButton.png)
+
+  ###### Figure 4: Program Complete
+  ![Program Complete](images/ProgramSuccess.png)
+
+7. Open a terminal program on your PC. For this example, Tera Term was used as the terminal program.
+
+  a. Select the port that is used by the Nano board as shown in Figure 5. <br />
+  b. Configure the serial port as shown in Figure 6. <br />
+  ###### Figure 5: Select the USB Port
+  ![Select USB Port](images/SelectPort.png)
+
+  ###### Figure 6: Configure the Serial Port
+  ![Configure Serial Port](images/PortConfig.png)
 
 ## Operation
+After the Nano board is programmed, the EUSART module will transmit the string "Button pressed!" to the PC terminal window each time push-button SW0 is pressed.
 
-<!-- Explain how to operate the example. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
+Input pin RC2 is connected to the output of SW0. Pin RC2 is pulled to a logic 'HIGH' state during nornmal operation. When SW0 is pressed, the internal circuit of the button makes a complete connection, allowing the voltage to flow through the pin to ground. When this transition of a logic 'HIGH' to logic 'LOW' occurs, IOC hardware detects this change and issues a negative-edge interrupt. The Interrupt Service Routine (ISR) will then clear the IOCCF flag and transmit the string 'Button pressed!' over the EUSART. The IOC edge selection can be configured in MCC as shown in Figure 7.
+
+  ###### Figure 7: IOC Edge Selection in MCC
+  ![IOC Edge Selection](images/IOCSelection.png)
+
+Output pin RC0 is configured as the TX output through PPS. Nano hardware also connects pin RC0 to the USB receive line, allowing a quick connection to the PC terminal without any additional wires or USB bridge circuits.
+
+The EUSART module is configured to use the `printf()` function call that it built in to the XC8 libraries. In MCC, simply mark the 'Redirect STDIO to USART' check-box as shown in Figure 8, and the additional function calls are added to the project. Example 1 shows the use of the `printf()` function in the IOC ISR.
+
+  ###### Figure 8: 'Redirect STDIO to USART' Check-box
+  ![STDIO to USART](images/STDIO2USART.png)
+
+
+###### Example 1: IOCCF Interrupt Service Routine Code Snippet
+
+    void IOCCF2_ISR(void)                     // IOCCF2 Interrupt Service Routine
+    {
+      if(IOCCF2_InterruptHandler)
+      {
+          IOCCF2_InterruptHandler();
+      }
+      IOCCFbits.IOCCF2 = 0;
+    }
+
+    void IOCCF2_DefaultInterruptHandler(void)  // Default interrupt handler for IOCCF2
+    {
+        printf("Button pressed! \r\n");
+    }
+
 
 ## Summary
+The 'pic16f15244-ioc-example' code example uses the PIC16F15244 Curiosity Nano Development board to demonstrate how to transmit 'Button pressed!' to a PC terminal window each time push-button SW0 is pressed. The example uses the Interrupt-on-Change (IOC) module to detect a positive to negative-edge transition on the input pin, and the EUSART module to transmit the string 'Button pressed!' to the PC terminal window.
 
-<!-- Summarize what the example has shown -->
+###### Figure 9: Button Pressed!
+![Terminal Window](images/TermWindow.png)
