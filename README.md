@@ -57,7 +57,7 @@ The 'pic16f15244-ioc-example' code example uses the PIC16F15244 Curiosity Nano D
 ## Operation
 After the Nano board is programmed, the EUSART module will transmit the string "Button pressed!" to the PC terminal window each time push-button SW0 is pressed.
 
-Input pin RC2 is connected to the output of SW0. Pin RC2 is pulled to a logic 'HIGH' state during nornmal operation. When SW0 is pressed, the internal circuit of the button makes a complete connection, allowing the voltage to flow through the pin to ground. When this transition of a logic 'HIGH' to logic 'LOW' occurs, IOC hardware detects this change and issues a negative-edge interrupt. The Interrupt Service Routine (ISR) will then clear the IOCCF flag and transmit the string 'Button pressed!' over the EUSART. The IOC edge selection can be configured in MCC as shown in Figure 7.
+Input pin RC2 is connected to the output of SW0. Pin RC2 is pulled to a logic 'HIGH' state during normal operation. When SW0 is pressed, the internal circuit of the button makes a complete connection, allowing the voltage to flow through the pin to ground. When this transition of a logic 'HIGH' to logic 'LOW' occurs, IOC hardware detects this change and issues a negative-edge interrupt. The Interrupt Service Routine (ISR) will then clear the IOCCF flag and transmit the string 'Button pressed!' over the EUSART. The IOC edge selection can be configured in MCC as shown in Figure 7.
 
   ###### Figure 7: IOC Edge Selection in MCC
   ![IOC Edge Selection](images/IOCSelection.png)
