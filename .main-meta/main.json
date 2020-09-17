@@ -40,19 +40,19 @@
         "subcategories": [
             "MCC",
             [
-               "Peripherals", "Interrupt-on-Change"
+               "Peripherals", "PORT"
             ],
 			[
                "Peripherals", "EUSART"
             ]
         ],
         "peripherals": [
-            "Interrupt-on-Change", "EUSART"
+            "PORT", "EUSART"
         ],
         "keywords": [
-            "MCC",
-            "Interrupt-on-Change",
-			"EUSART"
+            "Sensors",
+            "Interrupts",
+			"Serial Communications"
         ],
 		"additionalData": {
 			"longDescription": {
