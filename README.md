@@ -1,4 +1,3 @@
-<!-- Please do not change this html logo with link -->
 <a href="https://www.microchip.com" rel="nofollow"><img src="images/microchip.png" alt="MCHP" width="300"/></a>
 
 # Transmit "Button pressed" using Interrupt-on-Change with PIC16F15244
@@ -19,7 +18,7 @@ The 'pic16f15244-ioc-example' code example uses the PIC16F15244 Curiosity Nano D
 - Microchip PIC16F1xxxx Series Device Support (1.4.119) or newer [(packs.download.microchip.com/)](https://packs.download.microchip.com/)
 
 ## Hardware Used
-- PIC16F15244 Curiosity Nano [(DMxxxx)](https://www.microchip.com/Developmenttools/ProductDetails/EV09Z19A)
+- PIC16F15244 Curiosity Nano [](https://www.microchip.com/Developmenttools/ProductDetails/EV09Z19A)
 - Micro-USB to USB 2.0 cable
 
 ## Setup
@@ -31,7 +30,7 @@ The 'pic16f15244-ioc-example' code example uses the PIC16F15244 Curiosity Nano D
   ###### Figure 1: Open Project Window
   ![Open Project Window](images/OpenProject.png)
 
-5. Press the 'Project Properites' button to open the Project Properties window. Select the Curiosity tool from the Tools drop-down menu as shown in Figure 2.
+5. Press the 'Project Properties' button to open the Project Properties window. Select the Curiosity tool from the Tools drop-down menu as shown in Figure 2.
 
   ###### Figure 2: Select the Nano in Project Properties Window
   ![Select Tool](images/SelectTool.png)
