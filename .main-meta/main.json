@@ -4,27 +4,27 @@
     "content": {
         "metaDataVersion": "1.1.0",
         "name": "com.microchip.mcu8.mplabx.project.pic16f15244-ioc-example",
-        "version": "1.0.1",
+        "version": "2.0.0",
         "displayName": "Transmit \"Button pressed\" using Interrupt-on-Change with PIC16F15244",
         "projectName": "pic16f15244-ioc-example",
         "shortDescription": "The 'pic16f15244-ioc-example' code example uses the PIC16F15244 Curiosity Nano Development board to demonstrate how to transmit \"Button pressed!\" to a PC terminal application each time the Nano's push-button (SW0) is pressed.",
         "ide": {
-            "name": "MPLABX",
-            "semverRange": ">=5.40.0"
+            "name": "MPLAB X",
+            "semverRange": ">=5.45.0"
         },
         "compiler": [
 			{
 				"name": "XC8",
-				"semverRange": "^2.20.0"
+				"semverRange": "^2.31.0"
 			}
 		],
         "dfp": {
-            "name": "PIC16F-DEV_DFP",
-            "semverRange": "^0.1.25"
+            "name": "PIC16Fxxxx_DFP",
+            "semverRange": "^1.5.133"
         },
         "configurator": {
             "name": "MCC",
-            "semverRange": ">=3.95.0"
+            "semverRange": ">=4.1.0"
         },
         "device": {
             "metaDataVersion": "1.0.0",
@@ -52,7 +52,8 @@
         "keywords": [
             "Sensors",
             "Interrupts",
-			"Serial Communications"
+			"Serial Communications",
+	    "Melody"
         ],
 		"additionalData": {
 			"longDescription": {
