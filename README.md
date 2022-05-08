@@ -43,7 +43,7 @@ The 'pic16f15244-ioc-example' code example uses the PIC16F15244 Curiosity Nano D
   ###### Figure 4: Program Complete
   ![Program Complete](images/ProgramSuccess.png)
 
-7. Open a terminal program on your PC. For this example, Tera Term was used as the terminal program.
+7. For Windows PC: Open a terminal program. For this example, Tera Term was used as the terminal program.
 
   a. Select the port that is used by the Nano board as shown in Figure 5. <br />
   b. Configure the serial port as shown in Figure 6. <br />
@@ -51,7 +51,27 @@ The 'pic16f15244-ioc-example' code example uses the PIC16F15244 Curiosity Nano D
   ![Select USB Port](images/SelectPort.png)
 
   ###### Figure 6: Configure the Serial Port
-  ![Configure Serial Port](images/PortConfig.png)
+  ![Configure Serial Port](images/PortConfig.png) 
+  
+8. For MacOS: Open a terminal program. For this example, open a Terminal.app window. We shall use `screen` as the terminal program. 
+
+  a. With the project loaded in MPLAB & the Curiosity Nano board connected to the Mac's USB port: 
+    Find the tty device being used:  
+    
+    ```zsh  
+    % ls -l /dev | grep tty.usb          # search for a tty.usb connection  
+    crw-rw-rw-  1 root    wheel           18,   4 May  8 01:06 tty.usbmodem14102  
+    %  
+    ```  
+    
+  b. start `screen` in Terminal.app & configure the serial port in one command:  
+  
+    ```zsh 
+    % screen  /dev/tty.usbmodem14102 9600  
+    ```  
+    
+    You should now be connected to the serial port, and see the messages appear in `screen` on Terminal.app when the button is pushed.
+    Also note that the tty will change from time to time, but will always begin with `.usbmodem`
 
 ## Operation
 After the Nano board is programmed, the EUSART module will transmit the string "Button pressed!" to the PC terminal window each time push-button SW0 is pressed.
