@@ -1,8 +1,8 @@
 {
-    "metaDataVersion": "1.0.0",
+    "metaDataVersion": "1.0.1",
     "category": "com.microchip.ide.project",
     "content": {
-        "metaDataVersion": "1.1.0",
+        "metaDataVersion": "1.1.1",
         "name": "com.microchip.mcu8.mplabx.project.pic16f15244-ioc-example",
         "version": "2.0.1",
         "displayName": "Transmit \"Button pressed\" using Interrupt-on-Change with PIC16F15244",
@@ -27,10 +27,10 @@
             "semverRange": ">=4.1.0"
         },
         "device": {
-            "metaDataVersion": "1.0.0",
+            "metaDataVersion": "1.0.1",
             "category": "com.microchip.portal.contentRef",
             "content": {
-                "metaDataVersion": "1.0.0",
+                "metaDataVersion": "1.0.1",
                 "category": "com.microchip.device",
                 "name": "PIC16F15244",
                 "versionRange": "*"
@@ -57,10 +57,10 @@
         ],
 		"additionalData": {
 			"longDescription": {
-				"metaDataVersion": "1.0.0",
+				"metaDataVersion": "1.0.1",
 				"category": "com.microchip.portal.fileRef",
 				"content": {
-					"metaDataVersion": "1.0.0",
+					"metaDataVersion": "1.0.1",
 					"fileName": "./readme.md",
 					"mimeType": "text/markdown"
 				}
