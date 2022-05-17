@@ -50,7 +50,7 @@
             "PORT", "EUSART"
         ],
         "keywords": [
-            "Sensors",
+            "Sensor",
             "Interrupt on Change",
 			"Serial Communication",
 	    "Melody"
