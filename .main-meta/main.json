@@ -52,7 +52,7 @@
         "keywords": [
             "Sensors",
             "Interrupt on Change",
-			"Serial Communications",
+			"Serial Communication",
 	    "Melody"
         ],
 		"additionalData": {
