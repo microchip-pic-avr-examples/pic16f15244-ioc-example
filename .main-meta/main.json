@@ -1,8 +1,8 @@
 {
-    "metaDataVersion": "1.0.1",
+    "metaDataVersion": "1.0.0",
     "category": "com.microchip.ide.project",
     "content": {
-        "metaDataVersion": "1.1.1",
+        "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu8.mplabx.project.pic16f15244-ioc-example",
         "version": "2.0.1",
         "displayName": "Transmit \"Button pressed\" using Interrupt-on-Change with PIC16F15244",
@@ -37,30 +37,14 @@
             }
         },
         "author": "Microchip",
-        "subcategories": [
-            "MCC",
-            [
-               "Peripherals", "GPIO"
-            ],
-			[
-               "Peripherals", "EUSART"
-            ]
-        ],
-        "peripherals": [
-            "PORT", "EUSART"
-        ],
-        "keywords": [
-            "Sensor",
-            "Interrupt on Change",
-			"Serial Communication",
-	    "Melody"
-        ],
+        "peripherals": ["GPIO", "EUSART"],
+        "keywords": ["MCC", "Sensor", "Interrupt on Change", "Serial Communication", "Melody"],
 		"additionalData": {
 			"longDescription": {
-				"metaDataVersion": "1.0.1",
+				"metaDataVersion": "1.0.0",
 				"category": "com.microchip.portal.fileRef",
 				"content": {
-					"metaDataVersion": "1.0.1",
+					"metaDataVersion": "1.0.0",
 					"fileName": "./readme.md",
 					"mimeType": "text/markdown"
 				}
