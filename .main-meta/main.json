@@ -40,7 +40,7 @@
         "subcategories": [
             "MCC",
             [
-               "Peripherals", "PORT"
+               "Peripherals", "GPIO"
             ],
 			[
                "Peripherals", "EUSART"
