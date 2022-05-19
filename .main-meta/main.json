@@ -38,7 +38,7 @@
         },
         "author": "Microchip",
         "peripherals": ["GPIO", "EUSART"],
-        "keywords": ["MCC", "Sensor", "Interrupt on Change", "Serial Communication", "Curiosity Nano", "Melody"],
+        "keywords": ["MCC", "Sensor", "IOC", "Serial Communication", "Curiosity Nano", "Melody"],
         "additionalData": {
             "longDescription": {
                 "metaDataVersion": "1.0.0",
