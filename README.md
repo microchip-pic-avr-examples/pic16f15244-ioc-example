@@ -11,10 +11,10 @@ The 'pic16f15244-ioc-example' code example uses the PIC16F15244 Curiosity Nano D
 - [PIC16F15244 Product Page](https://www.microchip.com/wwwproducts/en/PIC16F15244)
 
 ## Software Used
-- MPLAB® X IDE 5.45 or newer [(microchip.com/mplab/mplab-x-ide)](http://www.microchip.com/mplab/mplab-x-ide)
-- MPLAB® XC8 2.31 or a newer compiler [(microchip.com/mplab/compilers)](http://www.microchip.com/mplab/compilers)
-- MPLAB® Code Configurator (MCC) 4.1.0 or newer [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
-- Microchip PIC16F1xxxx Series Device Support (1.5.133) or newer [(packs.download.microchip.com/)](https://packs.download.microchip.com/)
+- MPLAB® X IDE 6.10 or newer [(microchip.com/mplab/mplab-x-ide)](http://www.microchip.com/mplab/mplab-x-ide)
+- MPLAB® XC8 2.41 or a newer compiler [(microchip.com/mplab/compilers)](http://www.microchip.com/mplab/compilers)
+- MPLAB® Code Configurator (MCC) 5.3.7 or newer [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
+- Microchip PIC16F1xxxx Series Device Support (1.18.352) or newer [(packs.download.microchip.com/)](https://packs.download.microchip.com/)
 
 
 ## Hardware Used
@@ -23,8 +23,8 @@ The 'pic16f15244-ioc-example' code example uses the PIC16F15244 Curiosity Nano D
 
 ## Setup
 1. Connect the PIC16f15244 Curiosity Nano board to a PC using the Micro-USB to USB 2.0 cable.
-2. If not already on your system, download and install MPLABX IDE version 5.40 (or newer).
-3. If not already on your system, download and install the XC8 C-Compiler version 2.20 (or newer).
+2. If not already on your system, download and install MPLABX IDE version 6.10 (or newer).
+3. If not already on your system, download and install the XC8 C-Compiler version 2.41 (or newer).
 4. Open the 'pic16f15244-ioc-example.X' project as shown in Figure 1.
 
   ###### Figure 1: Open Project Window
@@ -52,10 +52,10 @@ The 'pic16f15244-ioc-example' code example uses the PIC16F15244 Curiosity Nano D
 
   ###### Figure 6: Configure the Serial Port
   ![Configure Serial Port](images/PortConfig.png)
-  
-8. For MacOS: Open a terminal program. For this example, open a Terminal.app window. We shall use `screen` as the terminal program. 
 
-  a. With the project loaded in MPLAB & the Curiosity Nano board connected to the Mac's USB port: 
+8. For MacOS: Open a terminal program. For this example, open a Terminal.app window. We shall use `screen` as the terminal program.
+
+  a. With the project loaded in MPLAB & the Curiosity Nano board connected to the Mac's USB port:
     Find the tty device being used:  
 
     ```zsh  
@@ -66,7 +66,7 @@ The 'pic16f15244-ioc-example' code example uses the PIC16F15244 Curiosity Nano D
 
   b. start `screen` in Terminal.app & configure the serial port in one command:  
 
-    ```zsh 
+    ```zsh
     % screen  /dev/tty.usbmodem14102 9600  
     ```  
 
@@ -82,26 +82,29 @@ Input pin RC2 is connected to the output of SW0. Pin RC2 is pulled to a logic 'H
 
 Output pin RC0 is configured as the TX output through PPS. Nano hardware also connects pin RC0 to the USB receive line, allowing a quick connection to the PC terminal without any additional wires or USB bridge circuits.
 
-The EUSART module is configured to use the `printf()` function call that it built in to the XC8 libraries. In MCC, simply mark the 'Redirect STDIO to USART' check-box as shown in Figure 8, and the additional function calls are added to the project. Example 1 shows the use of the `printf()` function in the IOC ISR.
+The EUSART module is configured to use the `printf()` function call that it built in to the XC8 libraries. In MCC, simply check the 'Redirect Printf to USART' check-box as shown in Figure 8, and the additional function calls are added to the project. Example 1 shows the use of the `printf()` function in the IOC ISR.
 
-  ###### Figure 8: 'Redirect STDIO to USART' Check-box
+  ###### Figure 8: 'Redirect Printf to USART' Check-box
   ![STDIO to USART](images/STDIO2USART.png)
 
 
 ###### Example 1: IOCCF Interrupt Service Routine Code Snippet
 
-    void IOCCF2_ISR(void)                     // IOCCF2 Interrupt Service Routine
-    {
-      if(IOCCF2_InterruptHandler)
-      {
-          IOCCF2_InterruptHandler();
-      }
-      IOCCFbits.IOCCF2 = 0;
+    void SW0_ISR(void) {
+
+        // Add custom IOCCF2 code
+
+        // Call the interrupt handler for the callback registered at runtime
+        if(SW0_InterruptHandler)
+        {
+            SW0_InterruptHandler();
+        }
+        IOCCFbits.IOCCF2 = 0;
     }
 
-    void IOCCF2_DefaultInterruptHandler(void)  // Default interrupt handler for IOCCF2
+    static void SW0_UserCallback(void)
     {
-        printf("Button pressed! \r\n");
+         printf("Button pressed! \r\n");
     }
 
 
