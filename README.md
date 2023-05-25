@@ -2,7 +2,7 @@
 
 # Transmit "Button pressed" using Interrupt-on-Change with PIC16F15244
 
-The 'pic16f15244-ioc-example' code example uses the PIC16F15244 Curiosity Nano Development board to demonstrate how to transmit "Button pressed!" to a PC terminal application each time the Nano's push-button (SW0) is pressed. The example highlights the use of the Interrupt-on-Change (IOC) and EUSART modules.
+The 'pic16f15244-ioc-example' code example uses the PIC16F15244 Curiosity Nano Development board to demonstrate how to transmit "Button pressed!" to a PC terminal application each time the Nano's push-button (SW0) is pressed. The example highlights the use of the Interrupt-on-Change (IOC) and EUSART (Enhanced/Addressable Universal Asynchronous Receiver Transceiver) modules.
 
 ##### PIC16F15244 Curiosity Nano Development Board:
 ![Curiosity Nano Development Board](images/NanoHighlights.png)
@@ -30,7 +30,7 @@ The 'pic16f15244-ioc-example' code example uses the PIC16F15244 Curiosity Nano D
   ###### Figure 1: Open Project Window
   ![Open Project Window](images/OpenProject.png)
 
-5. Press the 'Project Properties' button to open the Project Properties window. Select the Curiosity tool from the Tools drop-down menu as shown in Figure 2.
+5. Click -> **Project Properties** button to open the Project Properties window. Select the Curiosity tool from the Tools drop-down menu as shown in Figure 2.
 
   ###### Figure 2: Select the Nano in Project Properties Window
   ![Select Tool](images/SelectTool.png)
@@ -70,8 +70,8 @@ The 'pic16f15244-ioc-example' code example uses the PIC16F15244 Curiosity Nano D
     % screen  /dev/tty.usbmodem14102 9600  
     ```  
 
-    You should now be connected to the serial port, and see the messages appear in `screen` on Terminal.app when the button is pushed.
-    Also note that the tty will change from time to time, but will always begin with `.usbmodem`
+    This creates a connection to the serial port and enables messages to appear "screen" on Terminal.app when the button is pushed.
+    Note: The tty will change from time to time, but will always begin with `.usbmodem`
 ## Operation
 After the Nano board is programmed, the EUSART module will transmit the string "Button pressed!" to the PC terminal window each time push-button SW0 is pressed.
 
@@ -82,7 +82,7 @@ Input pin RC2 is connected to the output of SW0. Pin RC2 is pulled to a logic 'H
 
 Output pin RC0 is configured as the TX output through PPS. Nano hardware also connects pin RC0 to the USB receive line, allowing a quick connection to the PC terminal without any additional wires or USB bridge circuits.
 
-The EUSART module is configured to use the `printf()` function call that it built in to the XC8 libraries. In MCC, simply check the 'Redirect Printf to USART' check-box as shown in Figure 8, and the additional function calls are added to the project. Example 1 shows the use of the `printf()` function in the IOC ISR.
+The EUSART module is configured to use the `printf()` function call that it built in to the XC8 libraries. In MCC, check the 'Redirect Printf to USART' check-box as shown in Figure 8, and the additional function calls are added to the project. Example 1 shows the use of the `printf()` function in the IOC ISR.
 
   ###### Figure 8: 'Redirect Printf to USART' Check-box
   ![STDIO to USART](images/STDIO2USART.png)
@@ -90,10 +90,9 @@ The EUSART module is configured to use the `printf()` function call that it buil
 
 ###### Example 1: IOCCF Interrupt Service Routine Code Snippet
 
-    void SW0_ISR(void) {
-
+    void SW0_ISR(void)
+    {
         // Add custom IOCCF2 code
-
         // Call the interrupt handler for the callback registered at runtime
         if(SW0_InterruptHandler)
         {
